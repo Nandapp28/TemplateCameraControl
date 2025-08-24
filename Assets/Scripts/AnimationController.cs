@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
@@ -44,9 +45,11 @@ public class AnimationController : MonoBehaviour
                 break;
             case AnimState.Run:
                 animator.SetBool("isRun", true);
+                animator.SetFloat("speed", 500);
                 break;
             case AnimState.Jump:
                 animator.SetBool("isJump", true);
+                animator.SetTrigger("jump");
                 break;
             case AnimState.Walk:
                 animator.SetBool("isWalk", true);
@@ -60,6 +63,8 @@ public class AnimationController : MonoBehaviour
         animator.SetBool("isWalk", false);
         animator.SetBool("isRun", false);
         animator.SetBool("isIdle", false);
+        animator.ResetTrigger("jump");
+        animator.SetFloat("speed", 0);
     }
 
     private void HandleMovementAnimation()
