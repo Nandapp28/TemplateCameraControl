@@ -45,7 +45,7 @@ public class AnimationController : MonoBehaviour
                 break;
             case AnimState.Run:
                 animator.SetBool("isRun", true);
-                animator.SetFloat("speed", 500);
+                animator.SetFloat("speed", playerMovement.currentMoveSpeed);
                 break;
             case AnimState.Jump:
                 animator.SetBool("isJump", true);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
 
 /// <summary>
 /// Handles player movement mechanics: walking, running, jumping, and ground detection.
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 12f;
     public float jumpCooldown = 0.25f;
     public float airMultiplier = 0.4f;
+    public float currentMoveSpeed = 0f;
 
     // === INPUT SETTINGS ===
     [Header("Input Settings")]
@@ -112,7 +114,8 @@ public class PlayerMovement : MonoBehaviour
         MoveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // Calculate current movement speed (double if sprinting)
-        float currentMoveSpeed = (IsSprintPressed && IsGrounded) ? moveSpeed * 2f : moveSpeed;
+        currentMoveSpeed = (IsSprintPressed && IsGrounded) ? moveSpeed * 2f : moveSpeed;
+        Debug.Log(currentMoveSpeed);
 
 
         if (IsGrounded)
