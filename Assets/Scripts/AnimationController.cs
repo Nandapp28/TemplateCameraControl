@@ -43,10 +43,12 @@ public class AnimationController : MonoBehaviour
                 animator.SetBool("isIdle", true);
                 break;
             case AnimState.Run:
-                animator.SetBool("isRun", true);
+                //animator.SetBool("isRun", true);
+                animator.SetFloat("speed", playerMovement.currentMoveSpeed);
                 break;
             case AnimState.Jump:
                 animator.SetBool("isJump", true);
+                //animator.SetTrigger("jumping");
                 break;
             case AnimState.Walk:
                 animator.SetBool("isWalk", true);
